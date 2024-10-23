@@ -1,0 +1,173 @@
+.searchform .field-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    align-items: center;
+  }
+  
+  .searchform fieldset {
+    display: grid;
+    grid-auto-flow: row;
+    margin: 0;
+    border: none;
+    padding: 0;
+  }
+  
+  .searchform form > .field-wrapper + .field-wrapper,
+  .searchform form fieldset .field-wrapper + .field-wrapper {
+    margin-top: 24px;
+  }
+  
+  .searchform form > .selection-wrapper + .selection-wrapper,
+  .searchform form fieldset .selection-wrapper + .selection-wrapper {
+    margin-top: 0.25em;
+  }
+  
+  @media (width >= 600px) {
+    .searchform fieldset {
+      grid-template-columns: repeat(2, auto);
+      gap: 0.25em 24px;
+    }
+  
+    .searchform form > .selection-wrapper + .selection-wrapper,
+    .searchform form fieldset .field-wrapper + .field-wrapper,
+    .searchform form fieldset .selection-wrapper + .selection-wrapper {
+      margin-top: 0;
+    }
+  }
+  
+  @media (width >= 900px) {
+    .searchform fieldset {
+      grid-template-columns: repeat(3, auto);
+    }
+  }
+  
+  .searchform label,
+  .searchform fieldset > legend {
+    margin-bottom: 0.25em;
+    font-size: var(--body-font-size-s);
+    font-weight: 700;
+  }
+  
+  .searchform .selection-wrapper label {
+    margin: 0;
+    font-weight: normal;
+  }
+  
+  .searchform input,
+  .searchform select,
+  .searchform textarea {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0.5em;
+    border-radius: 4px;
+    border: 1px solid var(--dark-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: var(--body-font-size-s);
+    transition: border-color 0.2s;
+  }
+  
+  .searchform textarea {
+    resize: vertical;
+  }
+  
+  .searchform input:hover,
+  .searchform select:hover,
+  .searchform textarea:hover {
+    border: 1px solid var(--text-color);
+  }
+  
+  .searchform input:focus,
+  .searchform select:focus,
+  .searchform textarea:focus {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+  }
+  
+  .searchform .selection-wrapper input {
+    width: max-content;
+  }
+  
+  @media (width >= 600px) {
+    .searchform input,
+    .searchform select,
+    .searchform textarea {
+      max-width: 50vw;
+    }
+  
+    .searchform .button {
+      max-width: max-content;
+    }
+  }
+  
+  @media (width >= 900px) {
+    .searchform input,
+    .searchform select,
+    .searchform textarea {
+      max-width: 33vw;
+    }
+  }
+  
+  .searchform .field-wrapper.selection-wrapper {
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 1ch;
+  }
+  
+  .searchform label[data-required]::after {
+    content: '*';
+    color: firebrick;
+    margin-inline-start: 1ch;
+  }
+  
+  .searchform .toggle-wrapper .switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+  }
+  
+  .searchform .toggle-wrapper input {
+    opacity: 0;
+    width: 52px;
+    height: 28px;
+  }
+  
+  .searchform .toggle-wrapper .slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    border-radius: 28px;
+    background-color: var(--dark-color);
+    transition: background-color 0.2s;
+  }
+  
+  .searchform .toggle-wrapper .slider::before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 2px;
+    left: 2px;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    transition: transform 0.2s;
+  }
+  
+  .searchform .toggle-wrapper input:checked + .slider {
+    background-color: var(--link-color);
+  }
+  
+  .searchform .toggle-wrapper input:focus + .slider {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+  }
+  
+  .searchform .toggle-wrapper input:checked + .slider::before {
+      transform: translateX(24px);
+    }
+.searchform .submit-wrapper {
+        display: none;
+    }

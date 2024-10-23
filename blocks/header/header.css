@@ -162,6 +162,9 @@ header nav[aria-expanded='true'] .nav-sections {
   visibility: visible;
   align-self: start;
 }
+header nav .nav-sections .default-content-wrapper {
+float: right;
+}
 
 header nav .nav-sections ul {
   list-style: none;
@@ -265,4 +268,11 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+header nav .nav-tools {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
