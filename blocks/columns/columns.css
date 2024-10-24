@@ -19,6 +19,40 @@
   display: block;
 }
 
+.featured .columns.block > div {
+  display: flex;
+  background-color: #ebebeb;
+}
+
+.featured .columns.block > div div.columns-img-col {
+  flex-basis: 65%;
+  align-self: stretch;
+  display: flex;
+}
+
+.featured .columns.block > div div.columns-img-col div{
+  align-self: stretch;
+}
+
+.featured .columns.block > div div.columns-img-col img{
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured .columns.block > div div:last-child{
+  flex-basis: 35%;
+  padding: 3.5em 2em 2em;
+}
+
+.featured .columns.block > div div:last-child h2{
+  font-weight: normal;
+}
+
+.featured .columns.block > div div p:first-child{
+  font-weight: 600;
+}
+
+
 @media (width >= 900px) {
   .columns > div {
     align-items: center;

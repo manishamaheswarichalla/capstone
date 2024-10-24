@@ -146,18 +146,6 @@ export default async function decorate(block) {
     });
   }
 
-  function shrinkHeader() {
-    const header = document.querySelector(".header-wrapper");
-    console.log(header);
-    
-    // Check if the page has been scrolled more than 50px
-    if (window.scrollY > 50) {
-      header.classList.add("small");  // Add the 'small' class to reduce header size
-    } else {
-      header.classList.remove("small");  // Remove the 'small' class when scrolled up
-    }
-  }
-
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
@@ -175,8 +163,4 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
-
-  window.onscroll = function() {
-    shrinkHeader();
-  };
 }
