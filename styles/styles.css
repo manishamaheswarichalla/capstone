@@ -115,8 +115,8 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: normal;
+  line-height: 1.5;
   scroll-margin: 40px;
 }
 
@@ -242,7 +242,7 @@ main > .section {
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
   padding: 0 24px;
 }
@@ -263,4 +263,21 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+.cards-container h2#recent-articles::after, h2#next-adventures::after{
+  border-bottom: 2px solid var(--brandPrimary, #ffea00);
+  content: "";
+  display: block;
+  padding-top: 8px;
+  margin-bottom: 12px;
+  width: 84px;
+}
+
+.separator {
+  height: 1px;
+  content: " ";
+  background-color: #ebebeb;
+  max-width: 1100px;
+  margin: 4rem auto !important;
 }

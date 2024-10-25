@@ -46,6 +46,10 @@ footer .columns.wknd > div > div:first-child{
 footer .columns.wknd > div > div:nth-child(2){
   flex-basis: 50%;
 }
+footer .columns.wknd > div > div:last-child h5{
+  font-weight: 500;
+  margin-right: 0;
+}
 footer .columns.wknd > div > div:last-child{
   display: flex;
   flex-basis: 34%;
@@ -62,7 +66,9 @@ footer .columns.wknd > div > div:last-child table td p {
   background-color: #ebebeb;
   padding: 10px;
 }
-
+footer .columns.wknd > div > div:last-child table td p {
+  line-height: 0.6;
+}
 footer .columns.wknd > div > div:last-child table td img{
   width: 20px;
   height: auto;

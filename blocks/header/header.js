@@ -148,7 +148,7 @@ export default async function decorate(block) {
 
   function shrinkHeader() {
     const header = document.querySelector(".header-wrapper");
-    console.log(header);
+    // console.log(header);
     
     // Check if the page has been scrolled more than 50px
     if (window.scrollY > 50) {
