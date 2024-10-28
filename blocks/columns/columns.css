@@ -254,6 +254,26 @@ cursor: pointer;
   color: dimgray;
 }
 
+.content-page-template .columns-wrapper .columns div {
+  align-items: start;
+  gap: 70px;
+}
+
+.content-page-template .columns-wrapper .columns div > div:first-child {
+flex: 3;
+}
+
+.content-page-template .columns-wrapper .columns div > div:first-child h1{
+  margin-top: 0;
+  }
+
+.content-page-template .columns-wrapper .columns div > div:last-child {
+  flex: 1;
+  }
+
+  .content-page-template .columns-wrapper .columns div > div:last-child p{
+    font-size: 14px;
+    }
 
 @media (width >= 900px) {
   .columns > div {

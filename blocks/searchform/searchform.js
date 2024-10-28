@@ -1,107 +1,81 @@
-import createField from './form-fields.js';
+import {decorateIcons} from '../../scripts/aem.js';
 
-async function createForm(formHref, submitHref) {
-  const { pathname } = new URL(formHref);
-  const resp = await fetch(pathname);
-  const json = await resp.json();
+const searchParams = new URLSearchParams(window.location.search);
 
-  const form = document.createElement('form');
-  // form.dataset.action = submitHref;
-
-  const fields = await Promise.all(json.data.map((fd) => createField(fd, form)));
-  fields.forEach((field) => {
-    if (field) {
-      form.append(field);
-    }
-  });
-
-  // group fields into fieldsets
-  const fieldsets = form.querySelectorAll('fieldset');
-  fieldsets.forEach((fieldset) => {
-    form.querySelectorAll(`[data-fieldset="${fieldset.name}"`).forEach((field) => {
-      fieldset.append(field);
-    });
-  });
-
-  return form;
-}
-
-function generatePayload(form) {
-  const payload = {};
-
-  [...form.elements].forEach((field) => {
-    if (field.name && field.type !== 'submit' && !field.disabled) {
-      if (field.type === 'radio') {
-        if (field.checked) payload[field.name] = field.value;
-      } else if (field.type === 'checkbox') {
-        if (field.checked) payload[field.name] = payload[field.name] ? `${payload[field.name]},${field.value}` : field.value;
-      } else {
-        payload[field.name] = field.value;
-      }
-    }
-  });
-  return payload;
-}
-
-async function handleSubmit(form) {
-  if (form.getAttribute('data-submitting') === 'true') return;
-
-  const submit = form.querySelector('button[type="submit"]');
-  try {
-    form.setAttribute('data-submitting', 'true');
-    submit.disabled = true;
-
-    // create payload
-    const payload = generatePayload(form);
-    const response = await fetch(form.dataset.action, {
-      method: 'POST',
-      body: JSON.stringify({ data: payload }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (response.ok) {
-      if (form.dataset.confirmation) {
-        window.location.href = form.dataset.confirmation;
-      }
-    } else {
-      const error = await response.text();
-      throw new Error(error);
-    }
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error(e);
-  } finally {
-    form.setAttribute('data-submitting', 'false');
-    submit.disabled = false;
+function clearSearch() {
+  if (window.history.replaceState) {
+    const url = new URL(window.location.href);
+    url.search = '';
+    searchParams.delete('q');
+    window.history.replaceState({}, '', url.toString());
   }
 }
 
-export default async function decorate(block) {
-  console.log(block);
-  const links = [...block.querySelectorAll('a')].map((a) => a.href);
-  console.log(links);
-  const formLink = links.find((link) => link.endsWith('.json'));
-  console.log(formLink);
-  const submitLink = 'https://www.google.com/';
-  console.log(submitLink);
-  if (!formLink || !submitLink) return;
+async function handleSearch(e, block) {
+  const searchValue = e.target.value.trim();
+  searchParams.set('q', searchValue);
 
-  const form = await createForm(formLink, submitLink);
-  console.log(form)
-  block.replaceChildren(form);
+  if (searchValue.length >= 3) {
+    const url = new URL('/search', window.location.origin);
+    url.searchParams.set('q', searchValue);
+    window.location.href = url.toString();
+    return;
+  }
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const valid = form.checkValidity();
-    if (valid) {
-      handleSubmit(form);
-    } else {
-      const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
-      if (firstInvalidEl) {
-        firstInvalidEl.focus();
-        firstInvalidEl.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+  if (window.history.replaceState) {
+    const url = new URL(window.location.href);
+    url.search = searchParams.toString();
+    window.history.replaceState({}, '', url.toString());
+  }
+
+  if (searchValue.length < 3) {
+    clearSearch(block);
+  }
+}
+
+function searchInput(block) {
+  const input = document.createElement('input');
+  input.setAttribute('type', 'search');
+  input.className = 'search-input';
+
+  const searchPlaceholder = 'Search';
+  input.placeholder = searchPlaceholder;
+  input.setAttribute('aria-label', searchPlaceholder);
+
+  input.addEventListener('input', (e) => {
+    handleSearch(e, block);
   });
+
+  input.addEventListener('keyup', (e) => { if (e.code === 'Escape') { clearSearch(block); } });
+
+  return input;
+}
+
+function searchIcon() {
+  const icon = document.createElement('span');
+  icon.classList.add('icon', 'icon-search');
+  return icon;
+}
+
+function searchBox(block) {
+  const box = document.createElement('div');
+  box.classList.add('search-box');
+  box.append(
+    searchIcon(),
+    searchInput(block),
+  );
+  return box;
+}
+
+export default async function decorate(block) {
+  block.innerHTML = '';
+  block.append(searchBox(block));
+
+  if (searchParams.get('q')) {
+    const input = block.querySelector('input');
+    input.value = searchParams.get('q');
+    input.dispatchEvent(new Event('input'));
+  }
+
+  decorateIcons(block);
 }

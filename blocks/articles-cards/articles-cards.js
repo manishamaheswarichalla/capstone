@@ -50,7 +50,7 @@ async function renderCustomList(jsonURL) {
   
       // Create optimized picture using the existing function
       const pictureElement = createOptimizedPicture(item.imgSrc, item.title);
-      console.log(pictureElement)
+      console.log(pictureElement);
       imgAnchor.appendChild(pictureElement);
       imgDiv.appendChild(imgAnchor);
   
