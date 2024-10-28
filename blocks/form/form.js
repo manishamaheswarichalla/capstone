@@ -61,9 +61,16 @@ async function handleSubmit(form) {
       },
     });
     if (response.ok) {
-      if (form.dataset.confirmation) {
-        window.location.href = form.dataset.confirmation;
-      }
+      // if (form.dataset.confirmation) {
+      //   window.location.href = form.dataset.confirmation;
+      // }
+      const modalContent = form.closest('.modal-content');
+      modalContent.innerHTML = `
+        <div class="success-message">
+          <h2>Registration Successful!</h2>
+          <p>You have successfully registered.</p>
+        </div>
+      `;
     } else {
       const error = await response.text();
       throw new Error(error);
