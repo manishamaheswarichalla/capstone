@@ -48,6 +48,17 @@
   --nav-height: 64px;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* fallback fonts */
 @font-face {
   font-family: roboto-condensed-fallback;
@@ -220,6 +231,11 @@ button.secondary {
   color: var(--text-color);
 }
 
+main > .section:first-of-type {
+  margin-top: 0;
+  padding-top: 200px;
+}
+
 main img {
   max-width: 100%;
   width: auto;
@@ -281,4 +297,10 @@ main .section.highlight {
   background-color: #ebebeb;
   max-width: 1100px;
   margin: 4rem auto !important;
+}
+
+@media (width <= 767px) {
+  main > .section:first-of-type {
+      padding-top: 100px;
+  }
 }

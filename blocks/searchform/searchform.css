@@ -1,11 +1,10 @@
 /* search box */
 .searchform .search-box {
-  display: flex;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1ch;
   align-items: center;
   position: relative;
-  width: fit-content;
-    margin-left: auto;
 }
 
 .searchform .search-box .icon-search {
@@ -23,7 +22,7 @@
   border-radius: 0;
   color: var(--background-color-hf);
   height: 42px;
-  /* width: calc(100% - 4rem); */
+  width: calc(100% - 4rem);
   padding-left: 2.1rem;
   padding-right: 0.5rem;
 }
@@ -173,6 +172,6 @@
 
 @media (width >= 900px) {
   .searchform .search-box input {
-    /* width: calc(100% - 2rem); */
+    width: calc(100% - 2rem);
   }
 }

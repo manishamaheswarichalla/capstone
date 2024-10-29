@@ -85,7 +85,7 @@ footer .columns.wknd > div > div img {
 }
 
 footer .columns ul li a {
-  color: var(--text-color-hf);
+  color: #ebebeb;
   font-size: var(--body-font-size-xs);
   font-weight: normal;
   text-transform: uppercase;
@@ -102,5 +102,24 @@ footer .columns h5 {
 @media (width >= 900px) {
   footer .footer > div {
     padding: 40px 32px 24px;
+  }
+}
+
+@media (width < 900px) {
+
+  .columns > div > .columns-img-col {
+    margin-bottom: 20px;
+  }
+
+  footer .columns.wknd > div {
+    align-items: start;
+  }
+
+  footer .columns ul {
+    flex-direction: column;
+  }
+
+  footer .columns.wknd > div > div:last-child table td p {
+    margin-left: -2px;
   }
 }
