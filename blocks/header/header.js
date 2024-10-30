@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
@@ -138,35 +139,35 @@ export default async function decorate(block) {
   if (navSections) {
     const currentUrl = window.location.pathname;
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li')
-    .forEach((navSection) => {
-      const navLink = navSection.querySelector('a');
-      if(navLink) {
+      .forEach((navSection) => {
+        const navLink = navSection.querySelector('a');
+        if (navLink) {
         // Check if the link's href matches the current URL
-        const linkUrl = new URL(navLink.href, window.location.origin).pathname;
-        if(currentUrl === linkUrl){
-          navSection.classList.add('active');
+          const linkUrl = new URL(navLink.href, window.location.origin).pathname;
+          if (currentUrl === linkUrl) {
+            navSection.classList.add('active');
+          }
         }
-      }
-      if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-      navSection.addEventListener('click', () => {
-        if (isDesktop.matches) {
-          const expanded = navSection.getAttribute('aria-expanded') === 'true';
-          toggleAllNavSections(navSections);
-          navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        }
+        if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
+        navSection.addEventListener('click', () => {
+          if (isDesktop.matches) {
+            const expanded = navSection.getAttribute('aria-expanded') === 'true';
+            toggleAllNavSections(navSections);
+            navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          }
+        });
       });
-    });
   }
 
   function shrinkHeader() {
-    const header = document.querySelector(".header-wrapper");
+    const header = document.querySelector('.header-wrapper');
     // console.log(header);
-    
+
     // Check if the page has been scrolled more than 50px
     if (window.scrollY > 50) {
-      header.classList.add("small");  // Add the 'small' class to reduce header size
+      header.classList.add('small'); // Add the 'small' class to reduce header size
     } else {
-      header.classList.remove("small");  // Remove the 'small' class when scrolled up
+      header.classList.remove('small'); // Remove the 'small' class when scrolled up
     }
   }
 
@@ -184,16 +185,16 @@ export default async function decorate(block) {
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
   const navWrapper = document.createElement('div');
+
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
-  console.log(block)
+  console.log(block);
 
   const signInWrapper = nav.querySelector('.nav-sign-in');
   block.prepend(signInWrapper);
 
-
-  window.onscroll = function() {
+  window.onscroll = function () {
     shrinkHeader();
   };
 }
