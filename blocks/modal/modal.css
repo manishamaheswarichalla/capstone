@@ -17,6 +17,7 @@ body.modal-open {
     border: 1px solid var(--dark-color);
     background-color: #202020;
     box-shadow: 0 10px 20px dimgray;
+    margin: auto;
   }
   
   .modal dialog .modal-content {
