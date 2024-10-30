@@ -25,7 +25,7 @@
 }
 
 .featured .columns.block > div div.columns-img-col {
-  flex-basis: 70%;
+  flex-basis: 65%;
   align-self: stretch;
   display: flex;
 }
@@ -40,7 +40,7 @@
 }
 
 .featured .columns.block > div div:last-child{
-  flex-basis: 30%;
+  flex-basis: 35%;
   padding: 3.5em 2em 2em;
 }
 
