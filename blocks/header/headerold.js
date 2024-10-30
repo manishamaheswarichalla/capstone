@@ -108,12 +108,10 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  console.log(block);
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);
-  console.log(fragment);
 
   // decorate nav DOM
   block.textContent = '';
@@ -121,7 +119,7 @@ export default async function decorate(block) {
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
-  const classes = ['sign-in', 'brand', 'sections', 'tools'];
+  const classes = ['brand', 'sections', 'tools'];
   classes.forEach((c, i) => {
     const section = nav.children[i];
     if (section) section.classList.add(`nav-${c}`);
@@ -136,17 +134,7 @@ export default async function decorate(block) {
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
-    const currentUrl = window.location.pathname;
-    navSections.querySelectorAll(':scope .default-content-wrapper > ul > li')
-    .forEach((navSection) => {
-      const navLink = navSection.querySelector('a');
-      if(navLink) {
-        // Check if the link's href matches the current URL
-        const linkUrl = new URL(navLink.href, window.location.origin).pathname;
-        if(currentUrl === linkUrl){
-          navSection.classList.add('active');
-        }
-      }
+    navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
       navSection.addEventListener('click', () => {
         if (isDesktop.matches) {
@@ -156,18 +144,6 @@ export default async function decorate(block) {
         }
       });
     });
-  }
-
-  function shrinkHeader() {
-    const header = document.querySelector(".header-wrapper");
-    // console.log(header);
-    
-    // Check if the page has been scrolled more than 50px
-    if (window.scrollY > 50) {
-      header.classList.add("small");  // Add the 'small' class to reduce header size
-    } else {
-      header.classList.remove("small");  // Remove the 'small' class when scrolled up
-    }
   }
 
   // hamburger for mobile
@@ -187,13 +163,4 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
-  console.log(block)
-
-  const signInWrapper = nav.querySelector('.nav-sign-in');
-  block.prepend(signInWrapper);
-
-
-  window.onscroll = function() {
-    shrinkHeader();
-  };
 }
