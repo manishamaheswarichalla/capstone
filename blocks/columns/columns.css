@@ -90,7 +90,7 @@
     text-align: justify;
   }
 
-  .magazine-details .columns-wrapper .columns div > div:first-child h2:not(:nth-child(1)):after{
+  .magazine-details .columns-wrapper .columns div > div:first-child h2:not(:nth-child(1))::after{
     border-bottom: 2px solid var(--brandPrimary, #ffea00);
     content: "";
     display: block;
@@ -123,6 +123,7 @@
 .magazine-details .columns-wrapper .columns div > div:first-child table tr {
   display: flex;
 }
+
 .magazine-details .columns-wrapper .columns div > div:first-child table img {
   height: 60px;
   width: 60px;
@@ -136,6 +137,7 @@
   margin-bottom: .25rem;
   margin-left: 25px;
   margin-top: 0;
+
   /* padding-top: .5rem; */
   font-weight: normal;
   text-transform: capitalize;
@@ -169,6 +171,7 @@
   padding: 5px 10px;
   line-height: 1;
 }
+
 .magazine-details .columns-wrapper .columns div > div:first-child table td:last-child img {
   width: 25px;
   height: auto;
@@ -189,6 +192,7 @@
   margin-bottom: 0;
   text-transform: uppercase;
 }
+
 .magazine-details .columns-wrapper .columns div > div:last-child h5{
   font-family:  "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -202,6 +206,7 @@
   font-size: 14px;
   font-weight: normal;
 }
+
 .magazine-details .columns-wrapper .columns div > div:last-child h5#download-download a{
   display: flex;
   align-items: center;
@@ -213,6 +218,7 @@
   max-width: fit-content;
   line-height: normal;
 }
+
 .magazine-details .columns-wrapper .columns div > div:last-child h6{
   font-family:  "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: dimgray;
@@ -244,6 +250,7 @@ cursor: pointer;
 .magazine-details .columns-wrapper .columns div > div:last-child p:not(:first-child) a:hover{
   text-decoration: none;
 }
+
 .magazine-details .columns-wrapper .columns div > div:last-child p:not(:first-child) a:first-child {
   font-size: var(--body-font-size-m);
   color: var(--background-color-hf);

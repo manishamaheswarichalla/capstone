@@ -1,4 +1,4 @@
-import {decorateIcons} from '../../scripts/aem.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 const searchParams = new URLSearchParams(window.location.search);
 

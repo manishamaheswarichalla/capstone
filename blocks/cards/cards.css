@@ -28,9 +28,9 @@
 
 .cards .cards-card-body a {
     font-size: 18px;
-    padding: 0px;
+    padding: 0;
     background-color: unset;
-    margin: 0px;
+    margin: 0;
     border: none;
 }
 
@@ -38,7 +38,7 @@
   color: dimgray;
   font-size: 14px;
   text-transform: uppercase;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .cards .cards-card-body p:nth-child(2) {
@@ -67,6 +67,7 @@ main .members-only-section {
 .members-only-section .cards ul li{
   opacity: 0.65;
 }
+
 .members-only-section .cards .cards-card-body p:last-child{
   background-color: #ebebeb;
   color: dimgray;
@@ -82,11 +83,11 @@ main .members-only-section {
   margin-bottom: 7px;
 }
 
-.members-only-section .cards ul li:before {
+.members-only-section .cards ul li::before {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: -webkit-gradient(linear, right bottom, left top, from(hsla(0, 0%, 100%, 0)), color-stop(50%, hsla(0, 0%, 100%, 0)), color-stop(50%, var(--brandPrimary, #ffea00)), to(var(--brandPrimary, #ffea00)));
-  background: linear-gradient(to top left, hsla(0, 0%, 100%, 0) 0, hsla(0, 0%, 100%, 0) 50%, var(--brandPrimary, #ffea00) 50%, var(--brandPrimary, #ffea00) 100%);
+  background: -webkit-gradient(linear, right bottom, left top, from(hsl(0deg 0% 100% / 0%)), color-stop(50%, hsl(0deg 0% 100% / 0%)), color-stop(50%, var(--brandPrimary, #ffea00)), to(var(--brandPrimary, #ffea00)));
+  background: linear-gradient(to top left, hsl(0deg 0% 100% / 0%) 0, hsl(0deg 0% 100% / 0%) 50%, var(--brandPrimary, #ffea00) 50%, var(--brandPrimary, #ffea00) 100%);
   color: #000;
   content: "🔒";
   font-family: wknd-icon-font !important;
