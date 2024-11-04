@@ -1,5 +1,4 @@
 import {
-  buildBlock,
   loadHeader,
   loadFooter,
   decorateButtons,
@@ -44,7 +43,7 @@ async function loadFonts() {
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-function buildAutoBlocks(main) {
+function buildAutoBlocks() {
   try {
     // buildHeroBlock(main);
   } catch (error) {

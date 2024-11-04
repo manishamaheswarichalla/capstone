@@ -11,7 +11,7 @@ header {
 
 
 header.small .nav-wrapper {
-  box-shadow: 0 8px 20px 0 rgba(0,0,0,.26);
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 26%);
 }
 
 /* header and nav layout */
@@ -54,6 +54,7 @@ header nav[aria-expanded='true'] {
 header .nav-sign-in {
   background-color: var(--background-color-hf);
   padding: 5px 20px;
+
   /* height: 25px; */
 }
 
@@ -70,6 +71,7 @@ header .nav-sign-in .default-content-wrapper {
     display: flex;
     justify-content: space-between;
     gap: 0 32px;
+
     /* padding: 0px 32px; */
   }
  
@@ -79,6 +81,7 @@ header .nav-sign-in .default-content-wrapper {
     margin: 0 auto;
     line-height: 0;
   }
+
   header .section.nav-sign-in .default-content-wrapper p.button-container {
     margin: 0;
   }
@@ -94,6 +97,7 @@ header .nav-sign-in .default-content-wrapper {
     margin: 0;
     border: none;
   }
+
   header .section.nav-sign-in .default-content-wrapper a:hover{
     text-decoration: none;
   }
@@ -217,6 +221,7 @@ header nav[aria-expanded='true'] .nav-sections {
   visibility: visible;
   align-self: start;
 }
+
 /* header nav .nav-sections .default-content-wrapper {
 float: right;
 } */
@@ -233,6 +238,7 @@ header nav .nav-sections ul > li {
   text-transform: uppercase;
   font-size: var(--body-font-size-xs);
   color: var(--background-color-hf);
+
   /* margin-bottom: 20px; */
 }
 
@@ -343,6 +349,7 @@ header nav .nav-sections ul > li a {
   padding: 15px;
   text-decoration: none;
 }
+
 header nav .nav-sections ul > li:hover a, header nav .nav-sections ul > li.active a {
   background-color: var(--brand-primary-color);
 }
@@ -353,6 +360,7 @@ header nav .nav-sections ul > li:hover a, header nav .nav-sections ul > li.activ
   align-items: center;
   gap: 10px;
 } */
+
 /* header nav .section.searchform-container {
   display: flex;
   max-width: 1100px;
@@ -366,6 +374,7 @@ header nav .section.searchform-container.nav-sections .default-content-wrapper{
   justify-content: space-between;
   align-items: center;
 }
+
 header nav .section.searchform-container.nav-sections .default-content-wrapper picture img{
 width: 8rem;
 height: auto;
@@ -377,11 +386,11 @@ header nav .section.searchform-container.nav-sections .searchform-wrapper{
 
 
 @media (width <= 767px) {
-
   header .section.nav-sign-in .default-content-wrapper p.button-container {
     margin: 0;
     line-height: 0;
   }
+
   header .section.nav-sign-in .default-content-wrapper a{
     color: #ebebeb;
     text-transform: uppercase;
@@ -404,11 +413,12 @@ header nav .section.searchform-container.nav-sections .searchform-wrapper{
 }
 }
 
-@media (min-width: 767px) and (max-width: 899px) {
+@media (width >= 767px) and (width <= 899px) {
   header .section.nav-sign-in .default-content-wrapper p {
     margin: 0;
     line-height: 1;
   }
+
   header .section.nav-sign-in .default-content-wrapper a{
     color: #ebebeb;
     text-transform: uppercase;
@@ -426,7 +436,7 @@ header nav .section.searchform-container.nav-sections .searchform-wrapper{
   }
 }
 
-@media (max-width: 899px) {
+@media (width <= 899px) {
   header nav .nav-sections ul > li {
     margin-bottom: 20px;
   }
